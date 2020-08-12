@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HOISTING</title>
+</head>
+<body>
+    <script>
+        // HOISTING É O COMPORTAMENTO DE MOVER AS DECLARAÇÕES PARA O TOPO DO ESCOPO
+        
+        // --- EXEMPLO USANDO FUNCTION DECLARATION, A FUNÇÃO FOI DECLARADA DEPOIS DE CHAMAR ELA
+        
+        // RESULTADO:  13
+        console.log(somaFunctionDeclaration(10,3));
+
+        // FUNCTION DECLARATION UTILIZA HOISTING
+        function somaFunctionDeclaration(a,b){
+            return a + b;
+        }
+        // O HOISTING FOI RESPONSAVEL POR TRAZER A FUNÇÃO SOMA PARA O TOPO
+
+
+        // --- EXEMPLO USANDO FUNCTION EXPRESSION
+        console.log(somaFunctionExpression(10,13));
+        // RESULTADO : Uncaught ReferenceError: Cannot access 'somaFunctionExpression' before initialization
+    
+        // FUNCTION EXPRESSION NÃO UTILIZA HOISTING
+        const somaFunctionExpression = function (a,b){
+            return a+b;
+        }
+        // HOISTING NÃO FOI APLICADO NA FUNÇÃO EXPRESSION ENTÃO NÃO EXISTIA A FUNÇÃO AINDA QUANDO FOI CHAMADA ;)
+        
+
+
+    </script>
+    
+</body>
+</html>

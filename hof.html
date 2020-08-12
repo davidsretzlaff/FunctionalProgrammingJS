@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HOF</title>
+</head>
+<body>
+    <script>
+        //HOF NO PARADIGMA FUNCIONAL
+        function soma(a,b,fn){
+            return fn(a+b);
+        }
+        //FUNÇÃO  MULTIPLICADOR FIXO POR 2
+        function multiplicadorFixoPorDois(numero){
+            return numero * 2 ;
+        }
+
+        //FUNÇÃO MULTIPLICADOR DINAMICO
+        function multiplicadorDinamico(multi)
+        {
+            return function(numero){
+                return numero * multi;
+            }
+        }
+
+        function dividir(numero){
+            return numero / 2
+        }
+        
+        // EXEMPLO MULTIPLICADOR FIXO POR DOIS
+        console.log('USANDO FUNÇÃO MULTIPLICAR STATIC',soma(10,20,multiplicadorFixoPorDois));
+        //RESULTADO: 60
+        
+        // EXEMPLO MULTIPLICADOR DINAMICO
+        console.log('USANDO FUNÇÃO MULTIPLICAR DINAMICO',soma(10,20,multiplicadorDinamico(3)));
+        // RESULTADO : 90
+
+        console.log('USANDO FUNÇÃO MULTIPLICAR',soma(10,20,dividir));
+        // RESULTADO 15
+    </script>
+</body>
+</html>

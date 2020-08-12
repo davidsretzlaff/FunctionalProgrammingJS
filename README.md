@@ -32,7 +32,7 @@ f(x) = 3x²+5
 
 ```js
 function f(x) {
-  return (3*(Math.pow(2))) + 5
+  return (3*(Math.pow(x,2))) + 5
 }
 ```
 - Não existe statements
