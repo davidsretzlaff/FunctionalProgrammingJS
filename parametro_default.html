@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Default Parameter</title>
+</head>
+<body>
+    <script>
+        // FILL DEFAULT PARAMETER IN LASTNAME
+        function validate(name,lastName = 'Retzlaff'){
+            console.log(name, lastName);
+        }
+        // EXAMPLE USING FUNCTION WITH LASTNAME DEFAULT
+        console.log('EXAMPLE USING FUNCTION WITH LASTNAME DEFAULT');
+        validate('David');
+
+        // EXAMPLE USING FUNCTION WITH LASTNAME
+        console.log('EXAMPLE USING FUNCTION WITH LASTNAME');
+        validate('David','Silva');
+
+        
+        // CREATE FUNCTION WITH REQUIRED ARGUMENT 
+        function mandatory(argument){
+            throw new Error(`${argument} MANDATORY FIELD`)
+        }
+        function validateMandatory(name = mandatory('NAME'),lastName = 'Retzlaff', email = mandatory('EMAIL') )
+        {
+            console.log(name,lastName,email);
+        }
+        //validateMandatory('David','Retzlaff');
+        /*
+            RESULTADO: 
+            parametro_default.html:24 Uncaught Error: CAMPO OBRIGATÓRIO
+            at obrigatorio (parametro_default.html:24)
+            at validateMandatory (parametro_default.html:26)
+            at parametro_default.html:30
+        */
+        try{
+            validateMandatory('David','Retzlaff');
+        }
+        catch(e){
+            console.log('ERRO ENCONTRADO!', e.message)
+        }
+        
+    </script>
+</body>
+</html>
