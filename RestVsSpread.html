@@ -7,42 +7,43 @@
 </head>
 <body>
     <script>
-        // DIFERENÇA ENTRE PARAMETROS E ARGUMENTOS
-        // PARAMETROS SÃO DECLARADO NA FUNÇÃO
-        // ARGUMENTOS SÃO O VALOR QUE TU PASSA QUANDO CHAMA A FUNÇÃO
         
-        // EXEMPLO PARAMETROS DA FUNÇÃO USUARIO É EMAIL E SENHA
-        function usuario(email,senha){
-            console.log('NÃO UTILIZANDO REST',email,senha);
+        // DIFFERENCE BETWEEN PARAMETERS AND ARGUMENTS
+        // PARAMETERS ARE DECLARED IN THE FUNCTION
+        // ARGUMENTS ARE THE VALUES THAT YOU PASS WHEN THE FUNCTION CALLS
+        
+        // EXAMPLE PARAMETERS OF USER FUNCTION ARE EMAIL AND PASSWORD
+        function user(email,password){
+            console.log('NOT USING REST',email,password);
         }
 
-        // EXEMPLO ARGUMENTOS 
-        // ARGUMENTO davids@gmail.com E 123
-        usuario('davids@gmail.com','123');
+        // EXEMPLE ARGUMENTS
+        // ARGUMENTS davids@gmail.com E 123
+        user('davids@gmail.com','123');
 
 
-        // REST ESTÁ MUITO LIGADO A PARAMETRO
-        // SEMPRE QUE TU QUISER RECEBER TODOS OS DEMAIS ARGUMENTOS E RES
+        // REST IS VERY CONNECTED TO PARAMETER
+        // WHENEVER YOU WANT TO RECEIVE ALL THE OTHER ARGUMENTS
         // REST = ...
-        // EXEMPLO FUNÇÃO COM REST
-        function usuarioRest(email,senha, ...demais){
-            console.log('UTILIZANDO REST',email,senha,demais);
+        // EXAMPLE FUNCTION WITH  REST
+        function userRest(email,password, ...other ){
+            console.log('USING REST',email,password,other );
         }
         
-        //EXEMPLO ARGUMENTOS COM REST
-        usuarioRest('davids@gmail.com','123','BRASIL','RS','SOLTEIRO');
+        // EXAMPLE ARGUMENTS WITH REST
+        userRest('davids@gmail.com','123','BRASIL','RS','SOLTEIRO');
 
 
-        // SPREAD É ESPALHAR OS ARGUMENTOS
-        // ESPALHAR UM ARRAY
-        // CRIAR UM ARRAY COM OS DEMAIS DADOS PARA EXEMPLO
-        // EXEMPLO FUNÇÃO COM REST E PASSANDO ARGUMENTOS COM SPREAD
-        function usuarioRestComSpread(email,senha, ...demais){
-            console.log('UTILIZANDO REST COM SPREAD: ',email,senha,demais);
+        // SPREAD IS SPREAD THE ARGUMENTS
+        // SPREAD A ARRAY
+        // CREATE A ARRAY WITH OTHERS DATA FOR EXEMPLE
+        // EXAMPLE FUNCTION WITH REST PASSING ARGUMENTS WITH SPREAD
+        function userRestSpread(email,password, ...other){
+            console.log('USING REST WITH SPREAD: ',email,password,other);
         }
-        const demaisDados = ['BRASIL','RS','SOLTEIRO'];
-        // UTILIZANDO SPREAD
-        usuarioRestComSpread('davids@gmail.com','123',...demaisDados);
+        const otherData = ['BRASIL','RS','SOLTEIRO'];
+        // USING SPREAD
+        userRestSpread('davids@gmail.com','123',...otherData);
 
     </script>
     

@@ -3,41 +3,45 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>HOF</title>
+    <title>Higher order functions (HOF): IN THE FUNCTIONAL PARADIGM</title>
 </head>
 <body>
     <script>
-        //HOF NO PARADIGMA FUNCIONAL
-        function soma(a,b,fn){
+        
+        // Higher order functions (HOF): IN THE FUNCTIONAL PARADIGM
+        function sum(a,b,fn){
             return fn(a+b);
         }
-        //FUNÇÃO  MULTIPLICADOR FIXO POR 2
-        function multiplicadorFixoPorDois(numero){
-            return numero * 2 ;
+        
+        // FIXED MULTIPLY FUNCTION TO 2
+        function multiplyTo2(number){
+            return number * 2 ;
         }
 
-        //FUNÇÃO MULTIPLICADOR DINAMICO
-        function multiplicadorDinamico(multi)
+        // FUNÇÃO MULTIPLICADOR DINAMICO
+        // DINAMIC MULTIPLY FUNCTION
+        function multiplyDinamic(multi)
         {
-            return function(numero){
-                return numero * multi;
+            return function(number){
+                return number * multi;
             }
         }
 
-        function dividir(numero){
-            return numero / 2
+        function division(number){
+            return number / 2
         }
         
-        // EXEMPLO MULTIPLICADOR FIXO POR DOIS
-        console.log('USANDO FUNÇÃO MULTIPLICAR STATIC',soma(10,20,multiplicadorFixoPorDois));
-        //RESULTADO: 60
+        // EXAMPLE MULTIPLY TO 2
+        console.log('USING STATIC MULTIPLY FUNCTION',sum(10,20,multiplyTo2));
+        //RESULT: 60
         
-        // EXEMPLO MULTIPLICADOR DINAMICO
-        console.log('USANDO FUNÇÃO MULTIPLICAR DINAMICO',soma(10,20,multiplicadorDinamico(3)));
-        // RESULTADO : 90
+        // EXAMPLE DINAMIC EXAMPLE MULTIPLY 
+        console.log('USING DINAMIC MULTIPLY FUNCTION',sum(10,20,multiplyDinamic(3)));
+        // RESULT : 90
 
-        console.log('USANDO FUNÇÃO MULTIPLICAR',soma(10,20,dividir));
-        // RESULTADO 15
+        // EXAMPLE DIVISION FUNCTION
+        console.log('USING DIVISION FUNCTION',sum(10,20,division));
+        // RESULT 15
     </script>
 </body>
 </html>

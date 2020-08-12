@@ -7,31 +7,28 @@
 </head>
 <body>
     <script>
-        // HOISTING É O COMPORTAMENTO DE MOVER AS DECLARAÇÕES PARA O TOPO DO ESCOPO
+        // HOISTING IS THE BEHAVIOR OF MOVING DECLARATIONS TO THE TOP OF THE SCOPE
         
-        // --- EXEMPLO USANDO FUNCTION DECLARATION, A FUNÇÃO FOI DECLARADA DEPOIS DE CHAMAR ELA
-        
-        // RESULTADO:  13
-        console.log(somaFunctionDeclaration(10,3));
+        // --- EXAMPLE USING FUNCTION DECLARATION, THE FUNCTION WAS DECLARED AFTER CALLING IT
+        // RESULT:  13
+        console.log(sumFunctionDeclaration(10,3));
 
-        // FUNCTION DECLARATION UTILIZA HOISTING
-        function somaFunctionDeclaration(a,b){
+        // FUNCTION DECLARATION USING HOISTING
+        function sumFunctionDeclaration(a,b){
             return a + b;
         }
-        // O HOISTING FOI RESPONSAVEL POR TRAZER A FUNÇÃO SOMA PARA O TOPO
-
+        // HOISTING WAS RESPONSIBLE FOR BRINGING THE SUM FUNCTION TO THE TOP OF THE SCOPE
 
         // --- EXEMPLO USANDO FUNCTION EXPRESSION
-        console.log(somaFunctionExpression(10,13));
-        // RESULTADO : Uncaught ReferenceError: Cannot access 'somaFunctionExpression' before initialization
+        // --- EXAMPLE USING FUNCTION EXPRESSION
+        console.log(sumFunctionExpression(10,13));
+        // RESULT : Uncaught ReferenceError: Cannot access 'sumFunctionExpression' before initialization
     
         // FUNCTION EXPRESSION NÃO UTILIZA HOISTING
-        const somaFunctionExpression = function (a,b){
-            return a+b;
+        const sumFunctionExpression = function (a,b){
+            return a + b;
         }
-        // HOISTING NÃO FOI APLICADO NA FUNÇÃO EXPRESSION ENTÃO NÃO EXISTIA A FUNÇÃO AINDA QUANDO FOI CHAMADA ;)
-        
-
+        // HOISTING WAS NOT APPLIED IN FUNCTION EXPRESSION, THEN  THE FUNCTION DIDNT EXIST YET WHEN WAS CALLED
 
     </script>
     
