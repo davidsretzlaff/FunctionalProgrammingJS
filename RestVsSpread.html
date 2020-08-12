@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Parametros vs Argumentos / Rest vs Spread</title>
+</head>
+<body>
+    <script>
+        // DIFERENÇA ENTRE PARAMETROS E ARGUMENTOS
+        // PARAMETROS SÃO DECLARADO NA FUNÇÃO
+        // ARGUMENTOS SÃO O VALOR QUE TU PASSA QUANDO CHAMA A FUNÇÃO
+        
+        // EXEMPLO PARAMETROS DA FUNÇÃO USUARIO É EMAIL E SENHA
+        function usuario(email,senha){
+            console.log('NÃO UTILIZANDO REST',email,senha);
+        }
+
+        // EXEMPLO ARGUMENTOS 
+        // ARGUMENTO davids@gmail.com E 123
+        usuario('davids@gmail.com','123');
+
+
+        // REST ESTÁ MUITO LIGADO A PARAMETRO
+        // SEMPRE QUE TU QUISER RECEBER TODOS OS DEMAIS ARGUMENTOS E RES
+        // REST = ...
+        // EXEMPLO FUNÇÃO COM REST
+        function usuarioRest(email,senha, ...demais){
+            console.log('UTILIZANDO REST',email,senha,demais);
+        }
+        
+        //EXEMPLO ARGUMENTOS COM REST
+        usuarioRest('davids@gmail.com','123','BRASIL','RS','SOLTEIRO');
+
+
+        // SPREAD É ESPALHAR OS ARGUMENTOS
+        // ESPALHAR UM ARRAY
+        // CRIAR UM ARRAY COM OS DEMAIS DADOS PARA EXEMPLO
+        // EXEMPLO FUNÇÃO COM REST E PASSANDO ARGUMENTOS COM SPREAD
+        function usuarioRestComSpread(email,senha, ...demais){
+            console.log('UTILIZANDO REST COM SPREAD: ',email,senha,demais);
+        }
+        const demaisDados = ['BRASIL','RS','SOLTEIRO'];
+        // UTILIZANDO SPREAD
+        usuarioRestComSpread('davids@gmail.com','123',...demaisDados);
+
+    </script>
+    
+</body>
+</html>
