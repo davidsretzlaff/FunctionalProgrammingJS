@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Map, filter and reduce</title>
+</head>
+<body>
+    <script>    
+    /* 
+        ALL ARRAY HAVE METHODS MAP, FILTER AND REDUCE
+        [1,2,3,4].map EVERY TIME YOU USE MAP YOU ARE SAY RETURN A NEW ARRAY WITH THE SAME AMOUNT OF ELEMENTS BUT WITH MODIFIED VALUES
+        [1,2,3,4].filter RETURNS A NEW ARRAY, BUT MAY BE LESS WITH ELEMENTS, EXAMPLE FILTER TO RETURN ONLY PAIRS NUMBERS
+        [1,2,3,4].reduce RETURN NEW ARRAY BUT ANYTHING CAN BE RETURNED, EXAMPLE ARRAY OF OBJECT OR NUMBER OR FUNCTION ETC..
+    */
+
+    // EXAMPLES MAP
+    // USING MAP INTO ARRAY TO RETURN VALUES MULTIPLY BY 2
+    // MAP ACEPT TWO ARGUMENTS (VALUE,INDEX)
+    const arrayWithMapApplied = [1,2,3,4,5].map(function(value){
+        return value *2;
+    });
+    console.log('arrayWithMapApplied',arrayWithMapApplied);
+
+
+    // NOW USING MAP PASSING A FUNCTION 
+    function multiply(multi){
+        // THIS FUNCTION THAT WILL BE PASSING TO MAP
+        return function(number)
+        {
+            return multi * number;
+        };
+    }
+    /* 
+        FUNTION MULTIPLY IS EXAMPLE A CLOSURE
+        IT RETURN ANOTHER FUNCTION THAT MAKES MULTIPLICATION BY MEMORIZED VALUE
+        SO ARGUMENT 2 IS VALUE MEMORIZED
+        ARGUMENT NUMBER IT IS VALUE IN EVERY ARRAY INTERACTION
+    */
+    const arrayWithMapPassingAfuntionToMap = [1,2,3,4,5].map(multiply(2));
+    console.log('arrayWithMapPassingAfuntionToMap',arrayWithMapPassingAfuntionToMap);
+
+    
+    //  ------------------------------------------------------------------ //
+
+    // EXAMPLE FILTER RETURNING ONLY PAIR NUMBERS 
+    const arrayWithFilter = [1,2,3,4].filter(function(value,indice)
+    {
+        return ((value % 2) ===0)
+    });
+    console.log('arrayWithFilter',arrayWithFilter);
+
+    // EXAMPLE FILTER RETURNING ONLY PRODUCTS WITH CATEGORY BOOK
+    // ARRAY PRODUCTS
+    const products =[
+        {
+            name: 'Javascript',
+            category: 'book'
+        },
+        {
+            name: 'JS Raiz',
+            category: 'book'
+        },
+        {
+            name: 'Notebook',
+            category: 'eletronic'
+        }
+    ]
+
+    function filterCategory(category)
+    {
+        return function (array)
+        {
+            return array.category === category;
+        }
+    }
+    const arrayWithFilterCategory = products.filter(filterCategory('eletronic'));
+    console.log('arrayWithFilterCategory',arrayWithFilterCategory);
+
+    
+    </script>
+</body>
+</html>

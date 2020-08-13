@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Closures</title>
+</head>
+<body>
+    <script> 
+    // CLOSURES IT IS BASICALLY A PLACE WHERE YOU CAN MEMORIZE VALUES
+    // EVERY TIME YOU UP THE FUNCTION YOU CAN RESCUE THE MEMORIZED VALUE 
+
+    // EXAMPLE
+    // MULTI IS VALUE THAT WILL BE MEMORIZED
+    function multiply(multi)
+    {
+        return function(number)
+        {
+            //RESCUE THE MEMORIZED VALUE
+            return number * multi
+        };
+    }
+    // EXAMPLE USING 
+    // VALUE 2 WILL BE MEMORIZED
+    const multiplyTo2 = multiply(2);
+
+    // USING 
+    console.log('value memorized 2 * 5',multiplyTo2(5));
+    console.log('value memorized 2 * 3',multiplyTo2(3));
+    console.log('value memorized 2 * 4',multiplyTo2(4));
+    console.log('value memorized 2 * 10',multiplyTo2(10));
+
+    // O VALUE 2 HAS BEEN MEMORIZED, THIS IS CLOSURES
+
+    </script>
+</body>
+</html>
