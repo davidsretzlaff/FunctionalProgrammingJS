@@ -54,16 +54,22 @@
     // ARRAY PRODUCTS
     const products =[
         {
+            id: '001',
             name: 'Javascript',
-            category: 'book'
+            category: 'book',
+            value: 55
         },
         {
+            id: '002',
             name: 'JS Raiz',
-            category: 'book'
+            category: 'book',
+            value : 66
         },
         {
+            id: '003',
             name: 'Notebook',
-            category: 'eletronic'
+            category: 'eletronic',
+            value: 1800
         }
     ]
 
@@ -77,7 +83,55 @@
     const arrayWithFilterCategory = products.filter(filterCategory('eletronic'));
     console.log('arrayWithFilterCategory',arrayWithFilterCategory);
 
+    /*
+        EXAMPLE REDUCE 
+        FUNCTION(ACCUMULATOR,VALUE){
+            ...
+        },INITIAL VALUE
+
+    */
+    function filterCategoryToReduce(category)
+    {
+        return function(acc,value)
+        {
+            // EXAMPLE USING SPREAD 
+            return value.category == category ? [...acc,value] : acc;
+        }
+    }
+    const arrayWithReduce = products.reduce(filterCategoryToReduce('book'),[])
+    console.log('arrayWithReduce',arrayWithReduce);
+
+
+    // FUNCTION USING REDUCE
+    function groupBy(by){
+        return function(acc,value)
+        {
+            if(by === 'category') return groupByCategory(acc,value);
+            if(by === 'id') return groupById(acc,value);
+        }
+    };
+
+    function groupByCategory(acc,value){
+        return (!acc[value.category])  
+        ? {...acc, [value.category] : [value]} 
+        : {...acc, [value.category] : [...acc[value.category],value]}
+    }
+    function groupById(acc,value){
+        return (!acc[value.id])  
+        ? {...acc, [value.id] : [value]} 
+        : {...acc, [value.id] : [...acc[value.id],value]}
+    }
+
+    // EXAMPLE SEPARATE PRODUCTS BY CATEGORY USING REDUCE
+     const arrayWithReduceSeparateByCategory = products.reduce(groupBy('category'),{});
+    
+    console.log('arrayWithReduceSeparateByCategory',arrayWithReduceSeparateByCategory);
+
     
     </script>
 </body>
-</html>
+</html> 
+<!-- 
+    return (!acc[value.category])  
+? {...acc, [value.category] : [value]} 
+: {...acc, [value.category] : [...acc[value.category],value]}  -->
