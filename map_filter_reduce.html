@@ -108,6 +108,7 @@
         {
             if(by === 'category') return groupByCategory(acc,value);
             if(by === 'id') return groupById(acc,value);
+            if(by === 'value') return groupByValuesUnder(acc,value);
         }
     };
 
@@ -121,11 +122,37 @@
         ? {...acc, [value.id] : [value]} 
         : {...acc, [value.id] : [...acc[value.id],value]}
     }
+    function groupByValuesUnder(acc,value){
+        if(!acc['1000'])
+                acc['1000'] = []
+        
+        else if(!acc['2000'])
+            acc['2000'] = []
+
+        /*
+        verbose
+        // if(value.value < 1000){
+        //     acc['1000'] = [...acc['1000'],value] ;
+        // }
+        // else if(value.value < 2000){
+        //     acc['2000'] =[...acc['2000'],value];
+        // }
+        */
+        return (value.value < 1000)
+        ? {...acc, ['1000'] :[...acc['1000'],value] }
+        : {...acc, ['2000'] :[...acc['2000'],value]}        
+        
+    }
 
     // EXAMPLE SEPARATE PRODUCTS BY CATEGORY USING REDUCE
-     const arrayWithReduceSeparateByCategory = products.reduce(groupBy('category'),{});
+    const arrayWithReduceSeparateByCategory = products.reduce(groupBy('category'),{});
+
+    // EXAMPLE SEPARATE PRODUCTS BY UNDER VALUE 1000 AND UNDER VALUE 2000
+    const arrayWithReduceSeparateByValue = products.reduce(groupBy('value'),{});
+
     
     console.log('arrayWithReduceSeparateByCategory',arrayWithReduceSeparateByCategory);
+    console.log('groupByValuesUnder',arrayWithReduceSeparateByValue);
 
     
     </script>
