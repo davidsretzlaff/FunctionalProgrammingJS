@@ -113,21 +113,29 @@
     };
 
     function groupByCategory(acc,value){
-        return (!acc[value.category])  
-        ? {...acc, [value.category] : [value]} 
-        : {...acc, [value.category] : [...acc[value.category],value]}
+
+        // return (!acc[value.category])  
+        // ? {...acc, [value.category] : [value]} 
+        // : {...acc, [value.category] : [...acc[value.category],value]}
+
+        //refactoring 
+        return {...acc, [value.category] : [...acc[value.category] || [] ,value]}  
+         
     }
     function groupById(acc,value){
-        return (!acc[value.id])  
-        ? {...acc, [value.id] : [value]} 
-        : {...acc, [value.id] : [...acc[value.id],value]}
+        // return (!acc[value.id])  
+        // ? {...acc, [value.id] : [value]} 
+        // : {...acc, [value.id] : [...acc[value.id],value]}
+
+        //refacturing
+        return  {...acc, [value.id] : [...acc[value.id] || [] ,value]}
     }
     function groupByValuesUnder(acc,value){
-        if(!acc['1000'])
-                acc['1000'] = []
+        // if(!acc['1000'])
+        //         acc['1000'] = []
         
-        else if(!acc['2000'])
-            acc['2000'] = []
+        // else if(!acc['2000'])
+        //     acc['2000'] = []
 
         /*
         verbose
@@ -138,12 +146,11 @@
         //     acc['2000'] =[...acc['2000'],value];
         // }
         */
+       //refactoring 1
         return (value.value < 1000)
-        ? {...acc, ['1000'] :[...acc['1000'],value] }
-        : {...acc, ['2000'] :[...acc['2000'],value]}        
-        
-    }
-
+        ? {...acc, ['1000'] : [...(acc['1000'] || []),value]  }
+        : {...acc, ['2000'] :[...(acc['2000'] || []),value]}        
+        }
     // EXAMPLE SEPARATE PRODUCTS BY CATEGORY USING REDUCE
     const arrayWithReduceSeparateByCategory = products.reduce(groupBy('category'),{});
 
