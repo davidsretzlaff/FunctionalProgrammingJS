@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tools</title>
+</head>
+<body>
+    <script type="module">
+        import * as _ from './tools/lib.js'
+
+        // example unary
+        parseInt('9.2');
+        console.log([14.3,'9.2',100.4].map(parseInt));
+        console.log('Using Unary Function',[14.3,'9.2',100.4].map(_.unary(parseInt)));
+        console.log('parseInt.length',parseInt.length);
+        console.log('_.unary(parseInt).length',_.unary(parseInt).length);
+
+        // example identity        
+        console.log('using identity',_.soma(12,5));
+    </script>
+</body>
+</html>
