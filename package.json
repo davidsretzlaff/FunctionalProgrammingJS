@@ -1,0 +1,25 @@
+{
+  "name": "functional-programming",
+  "version": "1.0.0",
+  "description": "- Você diz o \"Como\" que deve ser executado\r - Instruções detalhadas para o programa\r - Alterando direto o estado do programa\r - Statements",
+  "main": "index.js",
+  "dependencies": {
+    "i": "^0.3.6"
+  },
+  "devDependencies": {
+    "json-server": "^0.16.1"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/davidsretzlaff/FunctionalProgrammingJS.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/davidsretzlaff/FunctionalProgrammingJS/issues"
+  },
+  "homepage": "https://github.com/davidsretzlaff/FunctionalProgrammingJS#readme"
+}
