@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>total car example - JS</title>
+</head>
+<body>
+    <script type="module">
+        import * as _ from './tools/lib.js';
+        /*
+            - Request to products - return all
+            - Get prices
+            - Apply discount 20%
+            - Apply tax 5%
+            - Sum total value 
+        */
+       
+        const getProducts = _.partialApplication(fetch,'http://localhost:3004/products');
+
+        function toJson(data){
+            return data.json();
+        }
+
+
+
+    function applydiscount(value){
+        return value * 0.80;
+    }
+       getProducts()
+       .then(toJson)
+       .then(_.map(_.prop('value')))
+       .then(_.map(_.multiply(0.8)))
+       .then(_.map(_.multiply(1.05)))
+       .then(_.sum)
+       .then(console.log);
+
+
+    </script>
+
+</body>
+</html>
