@@ -6,7 +6,8 @@
     <title>Map, filter and reduce</title>
 </head>
 <body>
-    <script>    
+    <script type='module'>    
+    import * as _ from './tools/lib.js';
     /* 
         ALL ARRAY HAVE METHODS MAP, FILTER AND REDUCE
         [1,2,3,4].map EVERY TIME YOU USE MAP YOU ARE SAY RETURN A NEW ARRAY WITH THE SAME AMOUNT OF ELEMENTS BUT WITH MODIFIED VALUES
@@ -106,12 +107,20 @@
     function groupBy(by){
         return function(acc,value)
         {
-            if(by === 'category') return groupByCategory(acc,value);
-            if(by === 'id') return groupById(acc,value);
             if(by === 'value') return groupByValuesUnder(acc,value);
+            const x = _.prop(by);
+            return {...acc, [x(value)] : [...acc[x(value)] || [] ,value]}  
+
+            // REFATORING WITH PROP FUNCTION
+            //if(by === 'category') return groupByCategory(acc,value);
+            //if(by === 'id') return groupById(acc,value);
+           
         }
     };
 
+   
+    /* 
+     // REFATORING WITH PROP FUNCTION
     function groupByCategory(acc,value){
 
         // return (!acc[value.category])  
@@ -122,6 +131,7 @@
         return {...acc, [value.category] : [...acc[value.category] || [] ,value]}  
          
     }
+    
     function groupById(acc,value){
         // return (!acc[value.id])  
         // ? {...acc, [value.id] : [value]} 
@@ -130,6 +140,8 @@
         //refacturing
         return  {...acc, [value.id] : [...acc[value.id] || [] ,value]}
     }
+    FIM REFACTOR
+    */
     function groupByValuesUnder(acc,value){
         // if(!acc['1000'])
         //         acc['1000'] = []
@@ -154,13 +166,15 @@
     // EXAMPLE SEPARATE PRODUCTS BY CATEGORY USING REDUCE
     const arrayWithReduceSeparateByCategory = products.reduce(groupBy('category'),{});
 
+    const arrayWithReduceSeparateById = products.reduce(groupBy('id'),{});
+
     // EXAMPLE SEPARATE PRODUCTS BY UNDER VALUE 1000 AND UNDER VALUE 2000
     const arrayWithReduceSeparateByValue = products.reduce(groupBy('value'),{});
 
     
     console.log('arrayWithReduceSeparateByCategory',arrayWithReduceSeparateByCategory);
     console.log('groupByValuesUnder',arrayWithReduceSeparateByValue);
-
+    console.log('arrayWithReduceSeparateById',arrayWithReduceSeparateById);
     
     </script>
 </body>
